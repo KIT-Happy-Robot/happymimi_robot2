@@ -1,0 +1,4 @@
+string req_data
+---
+string res_data
+bool result
