@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <!-- メガローバーの旋回中心からLRFまでの座標変換の設定 -->
+  <node pkg="tf" type="static_transform_publisher" name="stp_laser" args="0.1 0 0.105 3.14159 3.14159 0 base_link base_laser_link 100" />
+
+  <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="ip_address" value=""/>
+    <param name="serial_port" value="/dev/ttyACM0"/>
+    <param name="serial_baud" value="115200"/>
+    <param name="frame_id" value="base_laser_link"/>
+    <param name="calibrate_time" value="false"/>
+    <param name="publish_intensity" value="true"/>
+    <param name="publish_multiecho" value="false"/>
+    <param name="angle_min" value="-1.5707963"/>
+    <param name="angle_max" value="1.5707963"/>
+  </node>
+
+</launch>
