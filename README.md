@@ -5,7 +5,7 @@
 # Description
 以下のパッケージを含みます。
 
-- ### [happymimi_bringup](./happymimi_bringup)
+- ### [happymimi_bringup2](./happymimi_bringup2)
   > ロボットやセンサの起動を行うためのパッケージ
   このパッケージでできること
   - ロボットの起動
