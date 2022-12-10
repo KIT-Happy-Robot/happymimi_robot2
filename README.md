@@ -14,10 +14,10 @@
 - ### [happymimi_description](./happymimi_description)
   > ロボットモデルに関するファイルを格納したパッケージです。
 
-- ### [happymimi_params](./happymimi_params)
+- ### [happymimi_params2](./happymimi_params2)
   > ROSパラメータとして読み込むファイルを格納したパッケージです。
 
-- ### [happymimi_msgs](./happymimi_msgs)
+- ### [happymimi_msgs2](./happymimi_msgs2)
   > ROSメッセージやサービスファイルを格納したパッケージです。
 
 # Usage
