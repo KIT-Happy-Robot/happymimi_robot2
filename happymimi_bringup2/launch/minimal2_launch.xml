@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <!-- robotモデルの読み込み -->
+  <include file="$(find happymimi_bringup2)/launch/include/robot.launch.xml" />
+
+  <!-- megaroverの起動 -->
+  <include file="$(find happymimi_bringup2)/launch/include/megarover.launch.xml" />
+
+  <!-- パラメータの設定 -->
+  <rosparam ns="/location" command="load" file="$(find happymimi_params2)/location/rcap_2021_map.yaml" />
+
+  <!--  Robot localization -->
+  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="robot_localization_ekf_node_odom" clear_params="true" output="screen"> -->
+  <!--   <rosparam command="load" file="$(find happymimi_bringup)/config/localization_param.yaml" /> -->
+  <!--   <param name="world_frame" value="odom" /> -->
+  <!--   <remap from="odometry/filtered" to="fusion_odom" /> -->
+  <!--   <!-1- <remap from="odometry/filtered" to="/odom" /> -1-> -->
+  <!-- </node> -->
+
+</launch>

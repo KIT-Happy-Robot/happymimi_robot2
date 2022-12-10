@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="2dlidar" default="true" />
+  <arg name="realsense" default="true" />
+  <arg name="dynamixel" default="true" />
+  <arg name="respeaker" default="false" />
+
+  <!-- 2dlidarの起動 -->
+  <group if="$(arg 2dlidar)">
+    <include file="$(find happymimi_bringup2)/launch/include/sensor/2dlidar.launch" />
+  </group>
+
+  <!-- realsenseの起動 -->
+  <group if="$(arg realsense)">
+    <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch" /> -->
+    <include file="$(find realsense2_camera)/launch/rs_rgbd.launch" />
+  </group>
+
+  <!-- dynamixel_motorの起動 -->
+  <group if="$(arg dynamixel)">
+    <include file="$(find happymimi_bringup2)/launch/include/sensor/motor_setup.launch" />
+  </group>
+
+  <!-- respeakerの起動 -->
+   <group if="$(arg respeaker)">
+     <include file="$(find happymimi_bringup2)/launch/include/sensor/respeaker.launch" />
+  </group>
+
+</launch>

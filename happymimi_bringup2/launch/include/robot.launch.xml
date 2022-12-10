@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="urdf_file" default="$(find xacro)/xacro '$(find happymimi_description2)/robots/happymimi.urdf.xacro'"/>
+
+  <param name="robot_description2" command="$(arg urdf_file)"/>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="10.0" />
+  </node>
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+      <!-- <param name="source_list" type="str[]" value"" /> -->
+      <rosparam param="source_list">["/dynamixel_workbench/joint_states"]</rosparam>
+
+  </node>
+  <!-- Robot localization -->
+  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="robot_localization_ekf_node_odom" clear_params="true" output="screen"> -->
+  <!--   <rosparam command="load" file="$(find happymimi_bringup)/config/localization_param.yaml" /> -->
+  <!--   <param name="world_frame" value="odom" /> -->
+  <!--   <remap from="odometry/filtered" to="odom" /> -->
+  <!--   <!-1- <remap from="odometry/filtered" to="/odom" /> -1-> -->
+  <!-- </node> -->
+
+</launch>
