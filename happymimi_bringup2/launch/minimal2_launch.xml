@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?> -->
 <launch>
   <!-- robotモデルの読み込み -->
-  <include file="$(find happymimi_bringup2)/launch/include/robot.launch.xml" />
+  <include file="$(find happymimi_bringup2)/launch/include/robot_launch.xml" />
 
   <!-- megaroverの起動 -->
-  <include file="$(find happymimi_bringup2)/launch/include/megarover.launch.xml" />
+  <include file="$(find happymimi_bringup2)/launch/include/megarover_launch.xml" />
 
   <!-- パラメータの設定 -->
   <rosparam ns="/location" command="load" file="$(find happymimi_params2)/location/rcap_2021_map.yaml" />
