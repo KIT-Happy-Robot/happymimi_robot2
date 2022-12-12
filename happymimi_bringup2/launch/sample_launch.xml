@@ -1,0 +1,5 @@
+<launch>
+  <!-- robotモデルの読み込み -->
+  <node pkg="happymimi_bringup2" exec="robot_launch.xml" name="robo" namespace="robot"/>
+	  <!-- <include file="$(find happymimi_bringup2)/launch/include/robot_launch.xml" /> -->
+</launch>
