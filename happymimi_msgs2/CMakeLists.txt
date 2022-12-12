@@ -25,8 +25,7 @@ set(srv_files "srv/SetFloat.srv"
               "srv/SimpleTrg.srv"
               "srv/StrTrg.srv"
               "srv/SetStr.srv"
-              "srv/StrToStr.srv"
-)
+              "srv/StrToStr.srv")
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}

@@ -17,13 +17,29 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
-install(DIRECTORY
-  launch
-  DESTINATION share/${PROJECT_NAME}/
+find_package(rclcpp REQUIRED)
+find_package(tf REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
+#include_directories(launch/include)
+
+# Megarover pub_odom.cpp node
+set(dependencies
+  "rclcpp"
+  "tf"
+  "nav_msgs"
+  "geometry_msgs"
 )
+set(exec_name "pub_odom2")
+add_executable(${exec_name} src/pub_odom2.cpp)
+ament_target_dependencies(${exec_name} ${dependencies})
+install(TARGETS ${exec_name}
+  DESTINATION lib/${PROJECT_NAME})
+
+# Directories
+install(DIRECTORY config launch src
+  DESTINATION share/${PROJECT_NAME}/)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
