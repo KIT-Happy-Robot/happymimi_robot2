@@ -17,6 +17,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
@@ -29,18 +30,10 @@ find_package(xacro REQUIRED)
 find_package(rmw_implementation REQUIRED)
 
 include_directories(launch/include)
-
 #include_directories(${rclcpp_INCLUDE_DIRS}
 #                    ${rmw_implementation_INCLUDE_DIRS}
 #                    ${std_msgs_INCLUDE_DIRS}
 #		                ${tf_IMCLUDE_DIRS})
-
-#add_executable(mega_pub_odom src/pub_odom2.cpp)
-#target_link_libraries(mega_pub_odom
-#                      ${rclcpp_LIBRARIES}
-#                      ${rmw_implementation_LIBRARIES}
-#                      ${std_msgs_LIBRARIES})
-#install(TARGETS mega_pub_odom DESTINATION lib/${PROJECT_NAME})
 
 # Megarover pub_odom.cpp node
 set(dependencies
@@ -52,7 +45,14 @@ set(dependencies
 set(exec_name "pub_odom2")
 add_executable(${exec_name} src/pub_odom2.cpp)
 ament_target_dependencies(${exec_name} ${dependencies})
-install(TARGETS ${exec_name} DESTINATION lib/${PROJECT_NAME})
+install(TARGETS ${exec_name}
+  DESTINATION lib/${PROJECT_NAME})
+
+# 何でこれ書いたか忘れた。いらない？
+#target_link_libraries(mega_pub_odom
+#                      ${rclcpp_LIBRARIES}
+#                      ${rmw_implementation_LIBRARIES}
+#                      ${std_msgs_LIBRARIES})
 
 # Directories
 install(DIRECTORY config launch src
