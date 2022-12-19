@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <node pkg="happymimi_bringup2" exec="pub_odom" namespace="pub_odom" />
+  <node pkg="rosserial_python" exec="serial_node.py" namespace="serial_node">
+    <!-- <param name="port" type="str" value="/dev/ttyUSB0" /> -->
+    <param name="port" value="/dev/megarover" />
+    <!-- ポートレート[bit/sec]の設定 -->
+    <param name="baud" value="115200" />
+    <!-- Topicのリネーム -->
+    <remap from="/rover_twist" to="/cmd_vel" />
+  </node>
+
+</launch>
+
