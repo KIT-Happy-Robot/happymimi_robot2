@@ -16,7 +16,34 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # find dependencies
+find_package(ament_cmake REQUIRED
+    geometry_msgs
+    nav_msgs
+    roscpp
+    rospy
+    std_msgs
+    tf
+    tf2
+    xacro
+)
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rmw_implementation REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+
+include_directories(${rclcpp_INCLUDE_DIRS}
+                    ${rmw_implementation_INCLUDE_DIRS}
+                    ${std_msgs_INCLUDE_DIRS}
+		    ${tf_IMCLUDE_DIRS})
+
+add_executable(mega_pub_odom src/pub_odom.cpp)
+target_link_libraries(mega_pub_odom
+                      ${rclcpp_LIBRARIES}
+                      ${rmw_implementation_LIBRARIES}
+                      ${std_msgs_LIBRARIES})
+install(TARGETS mega_pub_odom DESTINATION lib/${PROJECT_NAME})
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
