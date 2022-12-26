@@ -23,7 +23,6 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(tf REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(xacro REQUIRED)
@@ -38,7 +37,7 @@ include_directories(launch/include)
 # Megarover pub_odom.cpp node
 set(dependencies
   "rclcpp"
-  "tf"
+  "tf2"
   "tf2_ros"
   "nav_msgs"
   "geometry_msgs")

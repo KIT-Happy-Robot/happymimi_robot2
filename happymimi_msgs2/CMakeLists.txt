@@ -28,6 +28,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/StrTrg.srv"
   "srv/SetStr.srv"
   "srv/StrToStr.srv"
+  "srv/NaviLocation.srv"
   #  DEPENDENCIES geometry_msgs
 ) 
 ament_export_dependencies(rosidl_default_runtime)
