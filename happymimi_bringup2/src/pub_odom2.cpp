@@ -22,33 +22,32 @@ void roverOdomCallback(const geometry_msgs::msg::Twist::ConstPtr& rover_odom){
 int main(int argc, char** argv){
   /* ros::init(argc, argv, "odometry_publisher"); */
   rclcpp::init(argc, argv);
-
-  //rclcpp::NodeHandle n;
-  auto node = rclcpp::Node::make_shared("pub_odom");
-  //rclcpp::Publisher  odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
-  //rclcpp::Subscriber odom_sub = n.subscribe("/rover_odo", 100, roverOdomCallback);
+  //std::shared_ptr<rclcpp::Node> node
+  auto node = rclcpp::Node::make_shared("pub_odom2");
   auto odom_pub = node->create_publisher<nav_msgs::msg::Odometry>("odom",50);
   auto odom_sub = node->create_subscription<std_msgs::msg::String>("/rover_odo",roverOdomCallback);
   //tf2_ros::TransformBroadcaster odom_broadcaster;
-  tf2_ros::TransformBroadcaster br(node);
+  tf2_ros::TransformBroadcaster br(node); // !!!
 
-  //get params
-  rclcpp::param::param<double>("odom_kv", odom_kv, 1.0);
-  rclcpp::param::param<double>("odom_kth", odom_kth, 1.0);
+  //get params !!!
+  //rclcpp::param::param<double>("odom_kv", odom_kv, 1.0);
+  //rclcpp::param::param<double>("odom_kth", odom_kth, 1.0);
+  node->get_parameter("odom_kv", odom_kv, 1.0);
+  node->get_parameter("odom_kth", odom_kth, 1.0)
 
   double x = 0.0;
   double y = 0.0;
   double th = 0.0;
 
   rclcpp::Time current_time, last_time;
-  current_time = ros::Time::now();
-  last_time = ros::Time::now();
+  current_time = rclcpp::Time::now(); // !!!
+  last_time = rclcpp::Time::now();
 
-  rclcpp::Rate r(20);
-  while(n.ok()){
+  rclcpp::Rate rate(20);
+  while(rclcpp.ok()){
 
     rclcpp::spinOnce();               // check for incoming messages
-    current_time = rclcpp::Time::now();
+    current_time = rclcpp::Time::now(); // !!!
 
     //compute odometry in a typical way given the velocities of the robot
     double dt = (current_time - last_time).toSec();

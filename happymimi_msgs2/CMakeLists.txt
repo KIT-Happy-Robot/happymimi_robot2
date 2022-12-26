@@ -18,20 +18,20 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 #find_package(rclpy REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-set(msg_files "msg/StrInt.msg")
-set(srv_files "srv/SetFloat.srv"
-              "srv/SimpleTrg.srv"
-              "srv/StrTrg.srv"
-              "srv/SetStr.srv"
-              "srv/StrToStr.srv")
 rosidl_generate_interfaces(${PROJECT_NAME}
-  ${msg_files}
-  ${srv_files}
-  )
+  "msg/StrInt.msg"  
+  "srv/SetFloat.srv"
+  "srv/SimpleTrg.srv"
+  "srv/StrTrg.srv"
+  "srv/SetStr.srv"
+  "srv/StrToStr.srv"
+  "srv/NaviLocation.srv"
+  #  DEPENDENCIES geometry_msgs
+) 
 ament_export_dependencies(rosidl_default_runtime)
-
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -43,18 +43,5 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-find_package(geometry_msgs REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/StrInt.msg"
-  "srv/SetFloat.srv"
-  "srv/SetStr.srv"
-  "srv/SimpleTrg.srv"
-  "srv/StrToStr.srv"
-  "srv/StrTrg.srv"
-  DEPENDENCIES geometry_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
-)
-
 
 ament_package()
