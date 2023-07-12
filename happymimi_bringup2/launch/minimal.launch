@@ -1,0 +1,26 @@
+<launch>
+  <arg name="multi_robot_name" default=""/>
+  <arg name="set_lidar_frame_id" default="base_scan"/>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [, , ]"/>
+
+  <!-- robotモデルの読み込み -->
+  <include file="$(find happymimi_bringup)/launch/include/robot.launch.xml" />
+  <!-- megaroverの起動 -->
+  <include file="$(find happymimi_bringup)/launch/include/megarover.launch.xml" />
+  <!-- パラメータの設定 -->
+  <rosparam ns="/location" command="load" file="$(find happymimi_params)/location/rcap_2021_map.yaml" />
+  <!--  Robot Localization --> ###
+  <node pkg="robot_localization" type="ekf_localization_node" name="robot_localization_ekf_node_odom" clear_params="true" output="screen">
+    <rosparam command="load" file="$(find happymimi_bringup)/config/localization_param.yaml" />
+    <param name="world_frame" value="odom" />
+    <remap from="odometry/filtered" to="fusion_odom" />
+    <remap from="odometry/filtered" to="/odom" /> -1->
+  </node>
+
+
+
+
+  <group if = "$(eval model == '')">
+    <include file="$(find )/launch/.launch"/>
+  </group>
+</launch>

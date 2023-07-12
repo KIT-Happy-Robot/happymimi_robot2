@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-  <node pkg="happymimi_bringup2" exec="pub_odom" namespace="pub_odom" />
+  <node pkg="happymimi_bringup" exec="pub_/odom" namespace="pub_odom" />
   <node pkg="rosserial_python" exec="serial_node.py" namespace="serial_node">
     <!-- <param name="port" type="str" value="/dev/ttyUSB0" /> -->
     <param name="port" value="/dev/megarover" />
