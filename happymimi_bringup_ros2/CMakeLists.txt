@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(happymimi_bringup2)
+project(happymimi_bringup_ros2)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -24,6 +24,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(xacro REQUIRED)
 find_package(rmw_implementation REQUIRED)
 
@@ -38,6 +39,7 @@ set(dependencies
   rclcpp
   tf2
   tf2_ros
+  tf2_geometry_msgs
   nav_msgs
   geometry_msgs
 )
@@ -48,7 +50,7 @@ set(dependencies
 #		                ${tf_IMCLUDE_DIRS}
 #)
 
-add_executable(pub_odom src/pub_odom2.cpp)
+add_executable(pub_odom src/pub_odom.cpp)
 ament_target_dependencies(pub_odom ${dependencies})
 install(TARGETS pub_odom
   DESTINATION lib/${PROJECT_NAME})
@@ -60,7 +62,7 @@ install(TARGETS pub_odom
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 install(DIRECTORY
-  src launch config 
+  src launch config rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
