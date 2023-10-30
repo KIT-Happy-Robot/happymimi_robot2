@@ -1,22 +1,21 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>happymimi_msgs_ros2</name>
+  <name>happymimi_robot</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="c1141120@planet.kanazawa-it.ac.jp">shiba</maintainer>
-  <license>TODO: License declaration</license>
+  <maintainer email="orin_mimi@todo.todo">orin_mimi</maintainer>
+  <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>rosidl_default_generators</buildtool_depend>
-  <exec_depend>rosidl_default_runtime</exec_depend>
-  <member_of_group>rosidl_interface_packages</member_of_group>
+  <!-- packages in my project -->
+  <exec_depend>happymimi_bringups</exec_depend>
+  <exec_depend>happymimi_params</exec_depend>
+  <exec_depend>happymimi_msgs</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  
-  <depend>geometry_msgs</depend>
-  
+
   <export>
     <build_type>ament_cmake</build_type>
   </export>
