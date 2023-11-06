@@ -7,7 +7,7 @@
 
   <!-- 2dlidarの起動 -->
   <group if="$(arg 2dlidar)">
-    <include file="$(find happymimi_bringup2)/launch/include/sensor/2dlidar.launch" />
+    <include file="$(find happymimi_bringup)/launch/include/sensor/2dlidar.launch" />
   </group>
 
   <!-- realsenseの起動 -->
@@ -18,12 +18,12 @@
 
   <!-- dynamixel_motorの起動 -->
   <group if="$(arg dynamixel)">
-    <include file="$(find happymimi_bringup2)/launch/include/sensor/motor_setup.launch" />
+    <include file="$(find happymimi_bringup)/launch/include/sensor/motor_setup.launch" />
   </group>
 
   <!-- respeakerの起動 -->
    <group if="$(arg respeaker)">
-     <include file="$(find happymimi_bringup2)/launch/include/sensor/respeaker.launch" />
+     <include file="$(find happymimi_bringup)/launch/include/sensor/respeaker.launch" />
   </group>
 
 </launch>

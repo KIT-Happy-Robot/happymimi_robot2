@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(happymimi_bringup_ros2)
+project(happymimi_bringup)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
