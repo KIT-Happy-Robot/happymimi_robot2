@@ -14,30 +14,11 @@ from launch.substitutions import Command, # コマンドライン実行の置換
 from launch_ros.parameter_descriptions import ParameterValue # Sノードのパラメータの値を表すため
 
 def generate_launch_description():
-    description_package_path = get_package_share_path('happymimi_description')
     bringup_package_path = get_package_share_path('happymimi_bringup')
     default_model_path = description_package_path / 'robots/happymimi.urdf.xacro' ###
     default_rviz_config_path = bringup_package_path / 'rviz/mega3.rviz'
     rviz_arg = DeclareLaunchArgument(name='rvizconfig', default_value=str(default_rviz_config_path),
                                      description='Absolute path to rviz config file')
-
-    robot_launch_path = "./robot.launch.py"
-    
-
-    # rviz
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', LaunchConfiguration('rvizconfig')],
-    )
-
-    # joint_state_publisher_node
-
-
-    # robot_state_publisher_node
-
     
     # pub_odom
     pub_odom_node = Node(
@@ -56,10 +37,5 @@ def generate_launch_description():
         
 
     return LaunchDescription([
-        model_arg,
-        #rviz_arg,
-        #robot_state_publisher_node,
-        #joint_state_publisher_node,
         pub_odom_node,
-        rviz_node,
     ])
