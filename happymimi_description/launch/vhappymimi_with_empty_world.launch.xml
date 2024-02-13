@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+
+<launch>
+    <arg name="robot_name" default="vhappymimi" />
+    <arg name="description_pkg_name" default="happymimi_description" />
+    <arg name="gazebo_pkg_name" default="gazebo_ros" />
+    <arg name="xacro_file_path" default="$(find-pkg-share $(var description_pkg_name))/robots/vhappymimi.urdf.xacro" />
+    <arg name="robot_description" default="$(command 'xacro $(var xacro_file_path)')"/>
+    <arg name="urdf_file" default="$(find-pkg-share $(var description_pkg_name))/robots/vhappymimi.urdf" />
+    
+    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py"/>
+    <!-- robot_state_publisher -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+         <param name="robot_description" value="$(command 'xacro $(var xacro_file_path)')"/>
+    </node>
+
+    <node pkg="gazebo_ros" exec="spawn_entity.py" args="-entity $(var robot_name) -topic /robot_description">
+    </node>
+</launch>
